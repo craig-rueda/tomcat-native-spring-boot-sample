@@ -12,6 +12,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import static java.util.Collections.singletonList;
 
@@ -61,4 +63,13 @@ public class TcnativeappApplication {
             return factory;
         }
     }
+
+    @RestController
+    public static class SampleController {
+        @RequestMapping("/sample")
+        public String doGet() {
+            return "ok";
+        }
+    }
+
 }
