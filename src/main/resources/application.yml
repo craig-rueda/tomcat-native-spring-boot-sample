@@ -1,0 +1,5 @@
+server:
+    ssl:
+      enabled: true
+      certificateFile: /path/to/your/pem/encoded/cert
+      certificateKeyFile: /path/to/your/pem/encoded/key
