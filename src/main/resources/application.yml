@@ -1,5 +1,10 @@
 server:
     ssl:
       enabled: true
+      aprEnabled: true
+      # keyStore: /path/to/jks # This is only needed if you're using JSSE
+      # keyPassword: password # This is only needed if you're using JSSE
+      ciphers: ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:RSA+AESGCM:RSA+AES:!3DES:!DES:!aNULL:!MD5
       certificateFile: /path/to/your/pem/encoded/cert
       certificateKeyFile: /path/to/your/pem/encoded/key
+      enabledProtocols: TLSv1.2

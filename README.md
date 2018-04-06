@@ -70,3 +70,21 @@ operates in conjunction with native bindings provided by tcnative.
     ```shell
     $ java ... -Djava.library.path=/usr/lib/tcnative ...
     ``` 
+
+## Creating certificates
+
+1. Create a self-signed cert using OpenSSL
+
+    ```shell
+    $ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes -subj '/CN=localhost'
+    ```
+    
+2. Import your key/cert into a Java Keystore
+
+    ```shell
+    # First, create a PKCS12 file which contains both your pkey, along with your cert
+    $ openssl pkcs12 -export -out keyStore.p12 -inkey key.pem -in cert.pem
+    
+    # Next, import your pkey/cert into a JKS file
+    $ keytool -importkeystore -deststorepass password -destkeypass password -destkeystore keystore.jks -srckeystore keyStore.p12 -srcstoretype PKCS12 -srcstorepass password -alias 1
+    ```
